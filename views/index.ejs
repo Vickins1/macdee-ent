@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Macdee Entertainment</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+       <link rel="stylesheet" type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+       <link rel="stylesheet" type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+       <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
+
+</head>
+<style>
+       /* General Styles */
+       body {
+              margin: 0;
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              background-color: #f9f9f9;
+              color: #333;
+       }
+
+       /* Header */
+       .header {
+              background-color: #fff;
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              height: 65px;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+       }
+
+       /* Logo Section */
+       .logo img {
+              max-height: 100px;
+              width: auto;
+              margin-left: 50px;
+       }
+
+       /* Navbar */
+       .navbar {
+              display: flex;
+              gap: 2rem;
+              justify-content: flex-end;
+              align-items: center;
+              width: 100%;
+       }
+
+       /* Navbar Links */
+       .navbar a {
+              color: #000;
+              text-decoration: none;
+              font-size: 0.9rem;
+              font-weight: bold;
+              transition: color 0.3s ease, transform 0.3s ease;
+              /* Added smooth transform effect */
+              margin-right: 30px;
+       }
+
+       /* Hover Effect */
+       .navbar a:hover {
+              color: rgb(0, 149, 255);
+              transform: translateX(5px);
+              /* Added slight hover movement */
+       }
+
+       /* Hamburger Menu */
+       .navbar-toggler {
+              display: none;
+              cursor: pointer;
+              font-size: 1.5rem;
+              color: #000000;
+              margin-left: 20px;
+       }
+
+       /* Responsive Design */
+       @media (max-width: 768px) {
+              .navbar {
+                     display: flex;
+                     flex-direction: column;
+                     position: absolute;
+                     top: 65px;
+                     left: 0;
+                     width: 100%;
+                     background-color: #ffffffee;
+                     gap: 0;
+                     opacity: 0;
+                     transform: translateY(-20px);
+                     transition: opacity 0.3s ease, transform 0.5s ease;
+                     margin-right: 20px;
+              }
+
+              .navbar.active {
+                     opacity: 1;
+                     transform: translateY(0);
+              }
+
+              .navbar a {
+                     font-size: 1rem;
+                     padding: 0.5rem 1rem;
+                     text-align: center;
+                     transition: transform 0.3s ease;
+              }
+
+              .navbar a:hover {
+                     color: rgb(0, 149, 255);
+                     transform: translateX(10px);
+              }
+
+              .navbar-toggler {
+                     display: block;
+                     margin-right: 20px;
+              }
+       }
+
+
+
+       /* Hero Section */
+       .hero {
+              text-align: center;
+              background-image: url('/images/b4.png');
+              /* Ensure correct path to image */
+              background-size: cover;
+              /* Ensure the background image covers the entire section */
+              background-position: center;
+              /* Center the image */
+              color: #fff;
+              height: 45vh;
+              /* Adjust height, you can change this based on design */
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              padding: 0 20px;
+              /* Add padding to the sides for smaller screens */
+              position: relative;
+              /* Necessary for positioning overlay */
+       }
+
+       /* Adding Overlay for Better Text Visibility */
+       .hero::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba(0, 0, 0, 0.4);
+              /* Black overlay with transparency */
+              z-index: -1;
+              /* Ensure it stays behind the text */
+       }
+
+       /* Hero Text */
+       .hero h2 {
+              font-size: 3rem;
+              /* Adjust text size */
+              margin-bottom: 1.5rem;
+              font-weight: bold;
+              text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+              /* Adds shadow to make the text stand out */
+       }
+
+       .hero p {
+              font-size: 1.2rem;
+              /* Adjust text size for paragraph */
+              margin-bottom: 2rem;
+              text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+              /* Adds shadow to the paragraph text */
+       }
+
+
+       /* Hero Heading */
+       .hero h2 {
+              font-size: 3rem;
+              /* Larger font size for the heading */
+              margin-bottom: 1rem;
+              font-weight: bold;
+              /* Make the text bolder */
+       }
+
+       /* Hero Paragraph */
+       .hero p {
+              font-size: 1.5rem;
+              margin-bottom: 2rem;
+              font-style: italic;
+       }
+
+       /* Hero Button */
+       .hero .btn {
+              padding: 0.8rem 1.5rem;
+              background: rgb(0, 149, 255);
+              color: #000;
+              text-decoration: none;
+              margin: 0.5rem;
+              border-radius: 10px;
+              font-weight: bold;
+              animation: inOut 2s ease-in-out infinite;
+              /* Apply continuous inOut animation */
+       }
+
+       /* Keyframe for In and Out Animation */
+       @keyframes inOut {
+              0% {
+                     transform: scale(1);
+                     /* Start at original size */
+              }
+
+              50% {
+                     transform: scale(1.1);
+                     /* Scale up slightly */
+              }
+
+              100% {
+                     transform: scale(1);
+                     /* Scale back down to original size */
+              }
+       }
+
+       .hero .btn:hover {
+              background: #5d5d5d;
+              animation: inOut 0.6s ease-in-out;
+              /* Trigger inOut animation on hover */
+       }
+
+       /* Optional: Add focus effect for accessibility */
+       .hero .btn:focus {
+              outline: none;
+              box-shadow: 0 0 0 3px rgba(0, 149, 255, 0.5);
+              /* Optional focus style */
+       }
+
+
+       /* Responsive Design for Hero Section */
+       @media (max-width: 768px) {
+              .hero {
+                     height: 50vh;
+              }
+
+              .hero h2 {
+                     font-size: 2rem;
+              }
+
+              .hero p {
+                     font-size: 1rem;
+              }
+       }
+
+       /* Services Section */
+       .services {
+              background-color: #f9f9f9;
+              padding: 4rem 2rem;
+              text-align: center;
+       }
+
+       .services h2 {
+              font-size: 2.5rem;
+              margin-bottom: 2rem;
+              color: #333;
+              font-weight: 600;
+       }
+
+       .service-cards {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+              gap: 2rem;
+              justify-items: center;
+       }
+
+       .card {
+              background-color: #fff;
+              border-radius: 10px;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+              padding: 2rem;
+              transition: all 0.3s ease-in-out;
+              position: relative;
+              text-align: left;
+              overflow: hidden;
+              max-width: 340px;
+              width: 100%;
+       }
+
+       .card h3 {
+              font-size: 1.8rem;
+              margin-bottom: 1rem;
+              color: #444;
+       }
+
+       .card p {
+              font-size: 1.1rem;
+              color: #666;
+              line-height: 1.5;
+       }
+
+       .card::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(45deg, #FFD700, #FF8C00);
+              opacity: 0.15;
+              z-index: -1;
+              transform: scale(1.2);
+              transition: transform 0.3s ease-in-out;
+       }
+
+       .card:hover {
+              box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+              transform: translateY(-10px);
+       }
+
+       .card:hover::before {
+              transform: scale(1);
+       }
+
+       .card:hover h3 {
+              color: rgb(0, 149, 255);
+       }
+
+       .card:hover p {
+              color: #444;
+       }
+
+       /* Responsive Design */
+       @media (max-width: 768px) {
+              .services {
+                     padding: 3rem 1.5rem;
+                     /* Adjust padding for smaller screens */
+              }
+
+              .services h2 {
+                     font-size: 2rem;
+                     /* Make heading smaller on mobile */
+              }
+
+              .service-cards {
+                     grid-template-columns: 1fr;
+                     /* Stack cards vertically on smaller screens */
+                     gap: 1.5rem;
+                     /* Adjust gap between cards */
+              }
+
+              .card {
+                     padding: 1.5rem;
+                     /* Reduce padding inside cards for smaller screens */
+              }
+
+              .card h3 {
+                     font-size: 1.6rem;
+                     /* Adjust heading size inside cards */
+              }
+
+              .card p {
+                     font-size: 1rem;
+                     /* Adjust text size inside cards */
+              }
+       }
+
+
+
+       /* YouTube Video Section */
+       .youtube-section {
+              text-align: center;
+              margin: 3rem 0;
+       }
+
+       .youtube-section h2 {
+              font-size: 2.5rem;
+              margin-bottom: 1.5rem;
+              color: #333;
+              font-weight: 600;
+       }
+
+       /* YouTube Video Embed Styling */
+       .youtube-video iframe {
+              border-radius: 10px;
+              box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+              max-width: 80%;
+              height: auto;
+       }
+</style>
+</head>
+
+<body>
+
+       <!-- Header -->
+       <header class="header">
+              <div class="logo">
+                     <a href="/">
+                            <img src="/images/Macdee.png" alt="Macdee Entertainment Logo">
+                     </a>
+              </div>
+              <nav class="navbar">
+                     <a href="#live"><i class="fas fa-video"></i> Live</a>
+                     <a href="/bookings"><i class="fas fa-calendar-check"></i> Bookings</a>
+                     <a href="#academy"><i class="fas fa-graduation-cap"></i> Academy</a>
+                     <a href="#store"><i class="fas fa-store"></i> Store</a>
+                     <a href="/auth"><i class="fas fa-user"></i> Sign In||Sign Up</a>
+                 </nav>                
+                 
+
+              <div class="navbar-toggler">☰</div>
+
+       </header>
+       <!-- Hero Section -->
+       <section class="hero">
+              <h2><strong>Experience the Magic of Macdee Entertainment!</strong></h2>
+              <p><strong>Delivering vibrant and memorable experiences for every event.</strong></p>
+              <a href="/bookings" class="btn">Let's Make it Happen – Book Now!</a>
+       </section>
+
+       <!-- Services Section -->
+       <section id="services" class="services">
+              <div class="container">
+                     <h2><strong>Our Services</strong></h2>
+                     <div class="service-cards">
+                            <div class="card">
+                                   <h3>MC & DJ Services</h3>
+                                   <p>Professional MCs and DJs to energize your events with seamless entertainment.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Sound & Lighting Rentals</h3>
+                                   <p>State-of-the-art equipment to create the perfect atmosphere for any event.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Photography & Videography</h3>
+                                   <p>Capture every memorable moment with our professional photographers and
+                                          videographers.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Live Streaming</h3>
+                                   <p>Broadcast your events seamlessly on our website, YouTube, and social media
+                                          platforms for a wider reach and unforgettable engagement.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Corporate Event Production</h3>
+                                   <p>End-to-end planning and execution for corporate events with precision.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Stage Event Production</h3>
+                                   <p>Dynamic stage setups tailored to elevate your events to the next level.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Customized Event Themes & Decor</h3>
+                                   <p>Personalized themes and decor to align with your unique vision.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Macdee DJ Academy</h3>
+                                   <p>Learn the art of DJing with our hands-on training programs. Our courses cover
+                                          everything from mixing to performance skills, perfect for beginners and
+                                          aspiring DJs.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Event Planning & Coordination</h3>
+                                   <p>Expert event planning services to ensure every detail is perfect.</p>
+                            </div>
+                            <div class="card">
+                                   <h3>Event Marketing & Promotion</h3>
+                                   <p>Comprehensive event marketing strategies to help you reach a larger audience.</p>
+                            </div>
+                     </div>
+              </div>
+       </section>
+
+       <section class="why-choose-us-section">
+              <div class="container">
+                     <h2>Why Choose Us</h2>
+                     <p>
+                            At Macdee Entertainment, we specialize in creating unforgettable moments that cater to your
+                            unique needs.
+                            With years of experience and a team of experts, we are committed to providing exceptional
+                            services for every occasion.
+                     </p>
+                     <ul>
+                            <li><strong>Professional Expertise:</strong> Our team is highly skilled and passionate about
+                                   delivering excellence.</li>
+                            <li><strong>Customer-Centric Approach:</strong> Your satisfaction is our priority, and we
+                                   tailor every experience to meet your expectations.</li>
+                            <li><strong>Versatile Solutions:</strong> From small gatherings to grand events, we handle
+                                   it all with precision and creativity.</li>
+                            <li><strong>Trusted Reputation:</strong> Join our growing list of happy clients who trust us
+                                   for their most special moments.</li>
+                     </ul>
+              </div>
+       </section>
+       <style>
+              /* Why Choose Us Section */
+              .why-choose-us-section {
+                     background-color: #f9f9f9;
+                     /* Light background for contrast */
+                     padding: 3rem 2rem;
+                     text-align: center;
+                     margin: 2rem 0;
+              }
+
+              .why-choose-us-section .container {
+                     max-width: 800px;
+                     /* Center content with a max width */
+                     margin: 0 auto;
+              }
+
+              .why-choose-us-section h2 {
+                     font-size: 2.5rem;
+                     margin-bottom: 1rem;
+                     color: #333;
+                     font-weight: bold;
+              }
+
+              .why-choose-us-section p {
+                     font-size: 1.2rem;
+                     line-height: 1.8;
+                     color: #555;
+                     margin-bottom: 2rem;
+              }
+
+              .why-choose-us-section ul {
+                     list-style: none;
+                     padding: 0;
+                     text-align: left;
+                     margin: 0 auto;
+                     max-width: 600px;
+              }
+
+              .why-choose-us-section li {
+                     font-size: 1rem;
+                     margin-bottom: 1rem;
+                     color: #444;
+                     line-height: 1.5;
+                     position: relative;
+                     padding-left: 1.5rem;
+              }
+
+              .why-choose-us-section li::before {
+                     content: '✓';
+                     /* Add a checkmark before each item */
+                     color: rgb(0, 149, 255);
+                     font-size: 1.2rem;
+                     position: absolute;
+                     left: 0;
+                     top: 0.2rem;
+              }
+
+              /* Responsive Design */
+              @media (max-width: 768px) {
+                     .why-choose-us-section h2 {
+                            font-size: 2rem;
+                     }
+
+                     .why-choose-us-section p {
+                            font-size: 1rem;
+                     }
+
+                     .why-choose-us-section ul {
+                            max-width: 100%;
+                     }
+
+                     .why-choose-us-section li {
+                            font-size: 0.95rem;
+                     }
+              }
+       </style>
+
+       <section class="reviews-section">
+              <h2>What Our Clients Say</h2>
+              <div class="reviews-slider">
+                     <div class="slider-track">
+                            <div class="review-item">
+                                   <p class="review-text">
+                                          "Macdee Entertainment made our event unforgettable! The professionalism and
+                                          creativity were beyond our expectations."
+                                   </p>
+                                   <p class="review-author">Sarah M., Event Host</p>
+                            </div>
+                            <div class="review-item">
+                                   <p class="review-text">
+                                          "The DJ program was amazing. My child learned so much while having fun. Highly
+                                          recommend their services!"
+                                   </p>
+                                   <p class="review-author">John D., Parent</p>
+                            </div>
+                            <div class="review-item">
+                                   <p class="review-text">
+                                          "Excellent service and great attention to detail. Macdee Entertainment is my
+                                          go-to company for any events."
+                                   </p>
+                                   <p class="review-author">Amanda C., Corporate Client</p>
+                            </div>
+                            <div class="review-item">
+                                   <p class="review-text">
+                                          "From the decor to the music, everything was top-notch. My guests couldn’t
+                                          stop praising the experience!"
+                                   </p>
+                                   <p class="review-author">Melissa K., Birthday Party Host</p>
+                            </div>
+                            <div class="review-item">
+                                   <p class="review-text">
+                                          "The Macdee team truly knows how to bring a vision to life. They transformed
+                                          my ideas into an extraordinary event."
+                                   </p>
+                                   <p class="review-author">Kevin R., Wedding Client</p>
+                            </div>
+                     </div>
+              </div>
+       </section>
+
+       <style>
+              /* Reviews Section */
+              .reviews-section {
+                     padding: 4rem 2rem;
+                     background-color: #f9f9f9;
+                     text-align: center;
+                     overflow: hidden;
+              }
+
+              .reviews-section h2 {
+                     font-size: 2.5rem;
+                     color: #333;
+                     margin-bottom: 2rem;
+                     font-weight: 700;
+              }
+
+              /* Slider Container */
+              .reviews-slider {
+                     position: relative;
+                     width: 100%;
+                     max-width: 600px;
+                     margin: 0 auto;
+                     overflow: hidden;
+              }
+
+              /* Slider Track */
+              .slider-track {
+                     display: flex;
+                     transition: transform 0.5s ease-in-out;
+              }
+
+              /* Review Item */
+              .review-item {
+                     flex: 0 0 100%;
+                     padding: 2rem;
+                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                     background-color: #fff;
+                     border-radius: 10px;
+                     text-align: left;
+                     box-sizing: border-box;
+              }
+
+              .review-text {
+                     font-size: 1.1rem;
+                     color: #555;
+                     margin-bottom: 1rem;
+                     font-style: italic;
+                     line-height: 1.6;
+              }
+
+              .review-author {
+                     font-size: 1rem;
+                     color: #333;
+                     font-weight: bold;
+                     margin-top: 1rem;
+                     text-align: right;
+                     /* Aligns author name */
+              }
+
+              /* Responsive Design */
+              @media (max-width: 768px) {
+                     .reviews-section h2 {
+                            font-size: 2rem;
+                     }
+
+                     .review-item {
+                            padding: 1.5rem;
+                     }
+
+                     .review-text {
+                            font-size: 1rem;
+                     }
+
+                     .review-author {
+                            font-size: 0.9rem;
+                     }
+              }
+       </style>
+
+       <script>
+              // Slider Functionality
+              const sliderTrack = document.querySelector('.slider-track');
+              const reviews = document.querySelectorAll('.review-item');
+              let currentIndex = 0;
+
+              // Function to slide to the next review
+              function slideToNext() {
+                     currentIndex = (currentIndex + 1) % reviews.length; // Loop back to the first review
+                     sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+              }
+
+              // Automatically slide every 5 seconds
+              setInterval(slideToNext, 5000);
+       </script>
+       <section id="contact" class="contact-section">
+              <div class="container">
+                     <h2><strong>Contact Us</strong></h2>
+                     <div class="contact-container">
+                            <!-- Contact Form -->
+                            <div class="contact-form">
+                                   <h3>Talk to Us</h3>
+                                   <form action="/submit-contact" method="POST">
+                                          <div class="form-group">
+                                                 <label for="name">Full Name</label>
+                                                 <input type="text" id="name" name="name" placeholder="Your Full Name"
+                                                        required>
+                                          </div>
+                                          <div class="form-group">
+                                                 <label for="email">Email Address</label>
+                                                 <input type="email" id="email" name="email"
+                                                        placeholder="Your Email Address" required>
+                                          </div>
+                                          <div class="form-group">
+                                                 <label for="message">Message</label>
+                                                 <textarea id="message" name="message"
+                                                        placeholder="Write Your Message Here..." rows="5"
+                                                        required></textarea>
+                                          </div>
+                                          <button type="submit" class="btn-submit">Send Message</button>
+                                   </form>
+                            </div>
+                            <!-- Contact Details -->
+                            <div class="contact-details">
+                                   <h3>Our Contact Details</h3>
+                                   <ul class="contact-list">
+                                          <li><strong>Phone:</strong> +254 702 903081 </li>
+                                          <li><strong>Email:</strong> info@macdeentertainment.com</li>
+                                          <li><strong>Address:</strong> Ruiru Town, Coner House Building near mainstage.
+                                          </li>
+                                   </ul>
+                                   <h3>Follow Us</h3>
+                                   <div class="social-icons">
+                                          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                   </div>
+                            </div>
+                     </div>
+              </div>
+       </section>
+       <style>
+              .contact-section {
+                     padding: 4rem 2rem;
+                     background-color: #f7f7f7;
+              }
+
+              .contact-section h2 {
+                     text-align: center;
+                     font-size: 2.5rem;
+                     margin-bottom: 2rem;
+                     color: rgb(0, 149, 255);
+                     font-weight: 700;
+              }
+
+              .contact-container {
+                     display: flex;
+                     flex-wrap: wrap;
+                     gap: 2rem;
+                     justify-content: space-between;
+              }
+
+              .contact-form,
+              .contact-details {
+                     flex: 1;
+                     min-width: 300px;
+                     max-width: 48%;
+                     background: #ffffff;
+                     padding: 2rem;
+                     border-radius: 8px;
+                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              }
+
+              .contact-form h3,
+              .contact-details h3 {
+                     font-size: 1.8rem;
+                     margin-bottom: 1.5rem;
+                     color: rgb(0, 149, 255);
+              }
+
+              .contact-form .form-group {
+                     margin-bottom: 1.5rem;
+              }
+
+              .contact-form label {
+                     display: block;
+                     margin-bottom: 0.5rem;
+                     font-weight: 600;
+                     color: #1d3557;
+              }
+
+              .contact-form input,
+              .contact-form textarea {
+                     width: 90%;
+                     padding: 0.75rem;
+                     border: 1px solid #ddd;
+                     border-radius: 6px;
+                     font-size: 1rem;
+                     color: #333;
+                     transition: border-color 0.3s;
+              }
+
+              .contact-form input:focus,
+              .contact-form textarea:focus {
+                     border-color: rgb(0, 149, 255);
+                     outline: none;
+              }
+
+              .contact-form .btn-submit {
+                     display: block;
+                     background-color: rgb(0, 149, 255);
+                     color: #fff;
+                     padding: 0.75rem 1.5rem;
+                     border: none;
+                     border-radius: 6px;
+                     cursor: pointer;
+                     text-align: center;
+                     transition: background-color 0.3s;
+              }
+
+              .contact-form .btn-submit:hover {
+                     background-color: #1d3557;
+              }
+
+              .contact-details .contact-list {
+                     list-style: none;
+                     padding: 0;
+                     margin-bottom: 1.5rem;
+              }
+
+              .contact-details .contact-list li {
+                     font-size: 1rem;
+                     color: #555;
+                     margin-bottom: 0.5rem;
+              }
+
+              .social-icons {
+                     display: flex;
+                     gap: 1rem;
+              }
+
+              .social-icon {
+                     font-size: 1.5rem;
+                     color: rgb(0, 149, 255);
+                     transition: transform 0.3s, color 0.3s;
+              }
+
+              .social-icon:hover {
+                     transform: scale(1.1);
+                     color: #1d3557;
+              }
+
+              /* Responsive Design */
+              @media (max-width: 768px) {
+                     .contact-container {
+                            flex-direction: column;
+                            align-items: center;
+                     }
+
+                     .contact-form,
+                     .contact-details {
+                            max-width: 100%;
+                     }
+              }
+       </style>
+
+
+
+       <section class="slider-section">
+              <h3><strong>Our previous events and equipment overview</strong></h3>
+              <div class="slider">
+                     <div class="slider-item"><img src="/images/s07.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/s08.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/s09.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so1.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so2.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so3.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so4.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so5.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so6.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so7.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so8.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so9.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so10.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so12.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so13.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so14.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so15.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so16.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so17.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so18.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so19.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so20.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so21.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so22.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so23.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so24.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so25.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/so26.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/s0.jpg" alt="Event 1"></div>
+                     <div class="slider-item"><img src="/images/s1.jpg" alt="Event 2"></div>
+                     <div class="slider-item"><img src="/images/s2.jpg" alt="Event 3"></div>
+                     <div class="slider-item"><img src="/images/s3.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s4.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s5.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s6.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s7.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s8.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s9.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s01.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s02.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s03.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s04.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s05.jpg" alt="Event 4"></div>
+                     <div class="slider-item"><img src="/images/s06.jpg" alt="Event 4"></div>
+              </div>
+       </section>
+       <style>
+              .slider-section {
+                     padding: 4rem 2rem;
+                     text-align: center;
+                     background: linear-gradient(135deg, #202020, rgb(0, 149, 255));
+                     /* Gradient background for professional appeal */
+                     color: #fff;
+              }
+
+              /* Section Title */
+              .slider-section h2 {
+                     font-size: 2.5rem;
+                     margin-bottom: 2rem;
+                     font-weight: bold;
+                     text-transform: uppercase;
+                     letter-spacing: 1px;
+              }
+
+              /* Slider Container */
+              .slider {
+                     display: grid;
+                     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                     /* Flexible grid layout */
+                     gap: 1.5rem;
+                     padding: 2rem 0;
+              }
+
+              /* Individual Slider Item */
+              .slider-item {
+                     position: relative;
+                     overflow: hidden;
+                     border-radius: 15px;
+                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                     transition: transform 0.3s ease, box-shadow 0.3s ease;
+              }
+
+              /* Slider Images */
+              .slider-item img {
+                     width: 100%;
+                     height: 450px;
+                     object-fit: cover;
+                     transition: transform 0.3s ease;
+              }
+
+              /* Responsive Design */
+              @media (max-width: 768px) {
+                     .slider-item img {
+                            height: 300px;
+                     }
+              }
+
+              @media (max-width: 480px) {
+                     .slider-item img {
+                            height: 250px;
+                     }
+              }
+       </style>
+
+       <!-- Footer -->
+       <footer class="footer">
+              <p>&copy; 2024 Macdee Entertainment. All Rights Reserved.</p>
+              Developed by <a href="https://vickinstechnologies.com">Vickins Technologies</a>
+       </footer>
+       <style>
+              .footer {
+                     background-color: #000;
+                     color: #fff;
+                     text-align: center;
+                     padding: 1.0rem 0;
+                     font-size: 0.9rem;
+                     font-weight: 400;
+              }
+
+              .footer p {
+                     margin: 0;
+                     line-height: 1.5;
+              }
+
+              .footer a {
+                     color: rgb(0, 149, 255);
+                     text-decoration: none;
+                     font-weight: bold;
+              }
+
+              .footer a:hover {
+                     text-decoration: underline;
+              }
+       </style>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script type="text/javascript"
+              src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+       <script type="text/javascript">
+              $(document).ready(function () {
+                     $('.slider').slick({
+                            autoplay: true,
+                            autoplaySpeed: 2000,
+                            arrows: false,
+                            dots: true,
+                            fade: true,
+                     });
+              });
+       </script>
+
+       <script>
+              // Mobile Navbar Toggle
+              const toggler = document.querySelector('.navbar-toggler');
+              const navbar = document.querySelector('.navbar');
+
+              toggler.addEventListener('click', () => {
+                     navbar.classList.toggle('active');
+              });
+       </script>
+</body>
+
+</html>

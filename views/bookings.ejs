@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .welcome-message {
+            background: linear-gradient(90deg, rgba(0, 149, 255, 0.8), rgba(34, 161, 252, 0.8));
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-message h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .welcome-message p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .table-container h2 {
+            color: rgb(1, 104, 178);
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background: linear-gradient(90deg, rgb(0, 149, 255), rgb(0, 50, 86));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(90deg, rgb(34, 161, 252), rgb(0, 149, 255));
+            transform: scale(1.05);
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .btn-sm {
+            border-radius: 20px;
+        }
+
+        .modal-header,
+        .modal-footer {
+            background-color: #f1f1f1;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 10px;
+            }
+
+            .table th,
+            .table td {
+                font-size: 12px;
+            }
+
+            .btn-custom {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            .welcome-message {
+                font-size: 16px;
+            }
+
+            .table-responsive {
+                overflow-x: auto;
+            }
+
+            .header img {
+                width: 100%;
+                height: auto;
+            }
+
+            .modal-dialog {
+                max-width: 90%;
+            }
+
+            .btn-sm {
+                font-size: 12px;
+            }
+        }
+
+        /* Additional Styles for Small Screens */
+        @media (max-width: 576px) {
+            .welcome-message h2 {
+                font-size: 20px;
+            }
+
+            .welcome-message p {
+                font-size: 14px;
+            }
+
+            .table th,
+            .table td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+       <div class="header">
+       
+              <div class="header-buttons">
+                     <a href="/logout" class="btn-outline-custom">
+                         <i class="fas fa-sign-out-alt"></i>
+                     </a>
+                 </div>
+                 
+          </div>
+        <div class="header text-center">
+            <img src="/images/Macdee.png" alt="Logo" id="logo" class="img-fluid" style="max-width: 200px;">
+        </div>
+
+        <div class="welcome-message">
+            <h2>Welcome, <%= user.username %>!</h2>
+            <p>We're excited to have you here. Submit your bookings below!</p>
+        </div>
+
+       
+          
+
+        <% if (messages.error && messages.error.length > 0) { %>
+              <div class="alert alert-danger">
+                  <ul>
+                      <% messages.error.forEach(function(error) { %>
+                          <li><%= error %></li>
+                      <% }); %>
+                  </ul>
+              </div>
+          <% } %>
+          
+          <% if (messages.success && messages.success.length > 0) { %>
+              <div class="alert alert-success">
+                  <% messages.success.forEach(function(success) { %>
+                      <p><%= success %></p>
+                  <% }); %>
+              </div>
+          <% } %>
+          
+                 
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Your Bookings</h2>
+                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    <strong><i class="fas fa-plus"></i> Add Booking</strong>
+                </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered table-striped">
+                  <thead class="table-light">
+                      <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Service</th>
+                          <th>Location</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Price</th>
+                          <th>Event Type</th>
+                          <th>People Expected</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% if (bookings && bookings.length > 0) { %>
+                          <% bookings.forEach((booking, index) => { %>
+                              <tr>
+                                  <td><%= index + 1 %></td>
+                                  <td><%= booking.customerName %></td>
+                                  <td><%= booking.customerEmail %></td>
+                                  <td><%= booking.service %></td>
+                                  <td><%= booking.location %></td>
+                                  <td><%= new Date(booking.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+                                  <td><%= booking.time %></td>
+                                  <td>Ksh.<%= booking.totalPrice.toFixed(2) %></td>
+                                  <td><%= booking.eventType %></td>
+                                  <td><%= booking.peopleExpected %></td>
+                                  <td><%= booking.status %></td>
+                                  <td>
+                                      <div class="btn-group" role="group" aria-label="Actions">
+                                          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModal" onclick="fillEditModal('<%= booking._id %>')">
+                                              <i class="fas fa-edit"></i>
+                                          </button>
+                                          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDeleteId('<%= booking._id %>')">
+                                              <i class="fas fa-trash"></i>
+                                          </button>
+                                      </div>
+                                  </td>
+                              </tr>
+                          <% }) %>
+                      <% } else { %>
+                          <tr>
+                              <td colspan="11" class="text-center">No bookings available</td>
+                          </tr>
+                      <% } %>
+                  </tbody>
+              </table>
+          </div>
+          
+          <style>
+              table th, table td {
+                  vertical-align: middle;
+              }
+          
+              .table th, .table td {
+                  text-align: center;
+              }
+          
+              .btn-info, .btn-danger {
+                  padding: 5px 10px;
+                  font-size: 12px;
+              }
+          
+              .table-responsive {
+                  max-width: 100%;
+                  overflow-x: auto;
+              }
+          
+              .btn-group button {
+                  margin-right: 5px;
+              }
+          </style>
+
+
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="editModalLabel">Edit Booking</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                   <form id="editBookingForm">
+                       <div class="mb-3">
+                           <label for="editCustomerName" class="form-label">Customer Name</label>
+                           <input type="text" class="form-control" id="editCustomerName" placeholder="Enter customer name">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editCustomerEmail" class="form-label">Customer Email</label>
+                           <input type="email" class="form-control" id="editCustomerEmail" placeholder="Enter customer email">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editService" class="form-label">Service</label>
+                           <select class="form-control" id="editService">
+                               <option value="" disabled>Select a service</option>
+                               <option value="Photography">Photography</option>
+                               <option value="Videography">Videography</option>
+                               <option value="Sound Setup">Sound Setup</option>
+                               <option value="Event Planning">Event Planning</option>
+                           </select>
+                       </div>
+                       <div class="mb-3">
+                           <label for="editLocation" class="form-label">Location</label>
+                           <input type="text" class="form-control" id="editLocation" placeholder="Enter location">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editDate" class="form-label">Date</label>
+                           <input type="date" class="form-control" id="editDate">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editTime" class="form-label">Time</label>
+                           <input type="time" class="form-control" id="editTime">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editEventType" class="form-label">Event Type</label>
+                           <input type="text" class="form-control" id="editEventType" placeholder="Enter event type">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editPeopleExpected" class="form-label">People Expected</label>
+                           <input type="number" class="form-control" id="editPeopleExpected" placeholder="Enter number of people expected">
+                       </div>
+                       <div class="mb-3">
+                           <label for="editTotalPrice" class="form-label">Total Price (Ksh)</label>
+                           <input type="number" class="form-control" id="editTotalPrice" placeholder="Enter total price">
+                       </div>
+                       <div class="mb-3 text-end">
+                           <button type="submit" class="btn btn-primary">Save Changes</button>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <form method="POST" action="/bookings/:id/delete" id="deleteBookingForm">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="deleteModalLabel">Delete Booking</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                       <p>Are you sure you want to delete this booking?</p>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                       <button type="submit" class="btn btn-danger">Delete</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
+
+   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Added 'modal-lg' here -->
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="bookingModalLabel">Book a Service</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                   <form action="/bookings" method="POST">
+                       <div class="row">
+                           <!-- Left Column -->
+                           <div class="col-md-6">
+                               <div class="mb-3">
+                                   <label for="customerName" class="form-label">Name</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                       <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Enter your full name" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="customerEmail" class="form-label">Email</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                       <input type="email" class="form-control" id="customerEmail" name="customerEmail" placeholder="Enter your email address" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="service" class="form-label">Service</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-cogs"></i></span>
+                                       <select class="form-control" id="service" name="service" required>
+                                           <option value="" disabled selected>Select a service</option>
+                                           <option value="Photography">Photography</option>
+                                           <option value="Videography">Videography</option>
+                                           <option value="Sound Setup">Sound Setup</option>
+                                           <option value="Event Planning">Event Planning</option>
+                                       </select>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="location" class="form-label">Location</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                       <input type="text" class="form-control" id="location" name="location" placeholder="Event location (e.g., Nairobi)" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="eventType" class="form-label">Event Type</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                       <input type="text" class="form-control" id="eventType" name="eventType" placeholder="Type of event (e.g., Wedding)" required>
+                                   </div>
+                               </div>
+                           </div>
+   
+                           <!-- Right Column -->
+                           <div class="col-md-6">
+                               <div class="mb-3">
+                                   <label for="date" class="form-label">Date</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                                       <input type="date" class="form-control" id="date" name="date" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="time" class="form-label">Time</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                       <input type="time" class="form-control" id="time" name="time" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="peopleExpected" class="form-label">People Expected</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-users"></i></span>
+                                       <input type="number" class="form-control" id="peopleExpected" name="peopleExpected" placeholder="Number of people expected" required>
+                                   </div>
+                               </div>
+                               <div class="mb-3">
+                                   <label for="totalPrice" class="form-label">Price (Ksh)</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                       <input type="number" class="form-control" id="totalPrice" name="totalPrice" placeholder="Enter total price in Ksh" required>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+   
+                       <div class="mb-3 text-end">
+                           <button type="submit" class="btn btn-custom">Book Now</button>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+   
+    
+
+   
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+/* Header */
+.header {
+       background-color: #ffffff;
+       padding: 1rem 2rem;
+       position: sticky;
+       top: 0;
+       z-index: 1000;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       height: 65px;
+   }
+   
+   /* Logo Section */
+   .logo {
+       flex-shrink: 0; /* Prevents logo from shrinking */
+   }
+   
+   .logo img {
+       max-height: 50px; /* Adjust size */
+       width: auto;
+   }
+   
+   /* Navbar */
+   .navbar {
+       display: flex;
+       gap: 2rem;
+       justify-content: flex-end;
+       flex-grow: 1;
+       align-items: center;
+   }
+   
+   .navbar a {
+       color: #000;
+       text-decoration: none;
+       font-size: 1.1rem;
+       font-weight: bold;
+       transition: color 0.3s ease;
+   }
+   
+   /* Hover Effect */
+   .navbar a:hover {
+       color: #FFD700; /* Golden color on hover */
+   }
+   
+   /* Hamburger Menu */
+   .navbar-toggler {
+       display: none;
+       cursor: pointer;
+       font-size: 1.5rem;
+       color: #007BFF;
+   }
+   
+   /* Responsive Design */
+   @media (max-width: 768px) {
+       .navbar {
+           display: none;
+           flex-direction: column;
+           position: absolute;
+           top: 60px;
+           left: 0;
+           background-color: #007BFF;
+           width: 100%;
+           padding: 1rem 0;
+       }
+   
+       .navbar a {
+           font-size: 1.2rem;
+           padding: 0.5rem 0;
+           text-align: center;
+       }
+   
+       .navbar.active {
+           display: flex;
+       }
+   
+       .navbar-toggler {
+           display: block;
+       }
+   }
+   
+   
+   
+
+   /* Hero Section */
+   .hero {
+       text-align: center;
+       background: #fff;
+       padding: 3rem 1rem;
+       height: 60vh;
+   }
+   
+   .hero h2 {
+       font-size: 2.5rem;
+       margin-bottom: 1rem;
+   }
+   
+   .hero p {
+       font-size: 1.2rem;
+       margin-bottom: 2rem;
+   }
+   
+   .hero .btn {
+       padding: 0.8rem 1.5rem;
+       background: #007BFF;
+       color: white;
+       text-decoration: none;
+       margin: 0 0.5rem;
+       border-radius: 5px;
+   }
+   
+/* Services Section */
+.services {
+       padding: 4rem 1rem;
+       background: #f4f4f4;
+       text-align: center;
+   }
+   
+   .services h2 {
+       font-size: 2.5rem;
+       margin-bottom: 3rem;
+       color: #333;
+   }
+   
+   /* Service Sections */
+   .service {
+       margin-bottom: 4rem;
+       padding: 2rem 0;
+       position: relative;
+       overflow: hidden;
+       transition: transform 0.3s ease-in-out;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       animation: fadeIn 1s ease-in-out forwards;
+   }
+   
+   .service img {
+       width: 100%;
+       height: auto;
+       border-radius: 8px;
+       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   }
+   
+   .service-content {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       padding: 2rem;
+       background: rgba(0, 0, 0, 0.5);
+       color: white;
+       border-radius: 8px;
+       max-width: 80%;
+       text-align: center;
+       transition: opacity 0.3s ease;
+   }
+   
+   .service h3 {
+       font-size: 2rem;
+       margin-top: 1.5rem;
+       color: #007BFF;
+   }
+   
+   .service p {
+       font-size: 1.1rem;
+       color: #ddd;
+       margin-top: 1rem;
+   }
+   
+   /* Add animation for the services */
+   @keyframes fadeIn {
+       from {
+           opacity: 0;
+           transform: translateY(30px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   
+   /* Responsive Design */
+   @media (min-width: 768px) {
+       .service {
+           flex-direction: row;
+           justify-content: space-between;
+           text-align: left;
+       }
+   
+       .service img {
+           width: 40%;
+           margin-right: 2rem;
+           border-radius: 8px;
+       }
+   
+       .service-content {
+           position: static;
+           max-width: 60%;
+           opacity: 0.8;
+       }
+   
+       .service:hover .service-content {
+           opacity: 1;
+       }
+   }
+   
+
+   
+   /* Why Choose Us Section */
+   .choose-us {
+       background: #007BFF;
+       color: white;
+       padding: 3rem 1rem;
+       text-align: center;
+   }
+   
+   .choose-us ul {
+       list-style-type: none;
+       padding: 0;
+       margin: 0 auto;
+       max-width: 600px;
+       text-align: left;
+   }
+   
+   .choose-us ul li {
+       font-size: 1.2rem;
+       margin: 0.5rem 0;
+   }
+   
+   /* Footer */
+   .footer {
+       background: #111;
+       color: white;
+       text-align: center;
+       padding: 1rem 0;
+   }
+   

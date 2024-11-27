@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup/Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right #f4f4f5);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: #fff;
+            color: #333;
+            width: 600px;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .form-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #2575fc;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input {
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #2575fc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #5fa7ff, #2575fc);
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #000000, #1f67d2);
+        }
+
+        .switch-text {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .switch-text span {
+            color: #2575fc;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-container .form-toggle {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #2575fc;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container .form-toggle:hover {
+            background: #f0f0f0;
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+        .message-box {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Success Message */
+        .message-box.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Error Message */
+        .message-box.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Info Message */
+        .message-box.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        /* Icon Style */
+        .message-box i {
+            margin-right: 10px;
+        }
+
+        /* Close Button */
+        .message-box .close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        /* Close Button Hover Effect */
+        .message-box .close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="form-container">
+
+       <img src="/images/Macdee.png" alt="Logo" class="logo">
+        <!-- Toggle between forms -->
+        <div class="form-toggle" id="form-toggle">Switch to Sign Up</div>
+
+        <!-- Login Form -->
+        <div id="login-form">
+
+              <!-- Display Flash Messages -->
+        <% if (messages && messages.length > 0) { %>
+              <% messages.forEach((msg) => { %>
+                  <div class="message-box <%= msg.type %>">
+                      <i class="fas <%= msg.type === 'success' ? 'fa-check-circle' : msg.type === 'error' ? 'fa-times-circle' : 'fa-info-circle' %>"></i>
+                      <%= msg.content %>
+                  </div>
+              <% }) %>
+          <% } %>
+
+            <h2><strong>Login to continue</strong></h2>
+            <form action="/login" method="POST">
+              <div class="input-group">
+                  <label for="login-email">Email</label>
+                  <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="input-group password-container">
+                  <label for="login-password">Password</label>
+                  <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                  <i class="fas fa-eye toggle-password" onclick="togglePassword('login-password')"></i>
+              </div>
+              <button type="submit">Login</button>
+              <p class="switch-text">Don't have an account? <span id="switch-to-signup">Sign Up</span></p>
+          </form>
+          
+        </div>
+
+<!-- Signup Form -->
+<div id="signup-form" style="display: none;">
+       <h2>Sign Up</h2>
+       <form action="/signup" method="POST">
+           <div class="input-group">
+               <label for="signup-name">Name</label>
+               <input type="text" id="signup-name" name="username" placeholder="Enter your name" required>
+           </div>
+           <div class="input-group">
+               <label for="signup-email">Email</label>
+               <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+           </div>
+           <div class="input-group password-container">
+               <label for="signup-password">Password</label>
+               <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+               <i class="fas fa-eye toggle-password" onclick="togglePassword('signup-password')"></i>
+           </div>
+           <div class="input-group">
+               <label for="confirm-password">Confirm Password</label>
+               <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+           </div>
+           <button type="submit">Sign Up</button>
+           <p class="switch-text">Already have an account? <span id="switch-to-login">Login</span></p>
+       </form>
+   </div>
+   
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const formToggle = document.getElementById('form-toggle');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+
+        // Function to toggle between forms
+        const toggleForms = () => {
+            const isLoginVisible = loginForm.style.display !== 'none';
+            loginForm.style.display = isLoginVisible ? 'none' : 'block';
+            signupForm.style.display = isLoginVisible ? 'block' : 'none';
+            formToggle.textContent = isLoginVisible ? 'Switch to Login' : 'Switch to Sign Up';
+        };
+
+        // Event listener for the toggle button
+        formToggle.addEventListener('click', toggleForms);
+
+        // Event listeners for text-based toggles (only if elements exist)
+        if (switchToSignup) {
+            switchToSignup.addEventListener('click', toggleForms);
+        }
+        if (switchToLogin) {
+            switchToLogin.addEventListener('click', toggleForms);
+        }
+
+        window.togglePassword = (id) => {
+            const inputField = document.getElementById(id);
+            const type = inputField.type === 'password' ? 'text' : 'password';
+            inputField.type = type;
+        };
+    });
+</script>
+
+</body>
+</html>
