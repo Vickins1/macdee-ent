@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Macdee Entertainment - Live Stream</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=fallback">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      background: linear-gradient(45deg, #ffffff, #0072ff);
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .lockscreen-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .lockscreen-logo a {
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px;
+      border: 2px solid #fff;
+      border-radius: 80px;
+      transition: all 0.3s ease;
+    }
+
+    .lockscreen-logo a:hover {
+      background-color: #fff;
+      color: #0072ff;
+    }
+
+    .main-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+    }
+
+    .footer-links {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links:hover {
+      text-decoration: underline;
+    }
+
+    /* Styling the footer */
+    .main-footer b {
+      font-weight: 700;
+    }
+
+    /* Adjust the size of the stream section */
+    .stream-container {
+      position: relative;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 50%; /* Set the width to 80% */
+      margin: 0 auto; /* Center the container */
+    }
+
+    .alert {
+      background-color: #0072ff;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      padding: 15px;
+    }
+
+    .alert strong {
+      font-size: 1.2rem;
+    }
+
+    .alert .close {
+      color: #fff;
+    }
+
+    .embed-responsive-16by9 {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .embed-responsive-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      display: none;
+    }
+
+    .stream-controls button {
+      margin: 10px 15px;
+      font-size: 1.1rem;
+      padding: 10px 25px;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+
+    .stream-controls button:hover {
+      background-color: #333;
+    }
+
+    .stream-controls button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Lock Screen Wrapper -->
+  <div class="lockscreen-wrapper">
+    <div class="lockscreen-logo">
+      <a href="/">Macdee Entertainment</a>
+    </div>
+
+    <h2 class="text-white mt-4 mb-5">Your Live Stream is Ready!</h2>
+
+    <!-- Stream Section -->
+    <div class="col-md-8">
+      <!-- Stream Welcome Alert -->
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Exciting News!</strong> Your live stream is about to start. Grab your popcorn and enjoy the show! 🎥
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Stream Title -->
+      <h3 class="text-white text-center mb-4">Live Stream: [Event Name]</h3>
+
+      <!-- Stream Container -->
+      <div class="stream-container">
+        <div class="embed-responsive embed-responsive-16by9">
+          <!-- Actual Live Stream Video -->
+          <iframe src="http://localhost:8080/hls/stream.m3u8" class="embed-responsive-item" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading-overlay">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <p>Loading Stream...</p>
+        </div>
+      </div>
+
+      <!-- Stream Controls Section -->
+      <div class="stream-controls mt-4 text-center">
+        <button class="btn btn-lg btn-success" id="startStreamButton"><i class="fas fa-play"></i> Start Streaming</button>
+        <button class="btn btn-lg btn-danger" id="stopStreamButton"><i class="fas fa-stop"></i> Stop Streaming</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.1
+      </div>
+      <strong>Copyright &copy; 2024 <a href="https://macdeeentertainment.com/" class="footer-links">Macdee Entertainment</a>.</strong> All rights reserved.
+    </footer>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <!-- Bootstrap 4 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Stream Section Scripts -->
+  <script>
+    // Show loading overlay while the stream is loading
+    const iframe = document.querySelector("iframe");
+    const loadingOverlay = document.getElementById("loading");
+
+    iframe.onload = () => {
+      loadingOverlay.style.display = "none"; // Hide loading overlay when iframe is ready
+    };
+
+    // Handle the Stream Control Buttons
+    document.getElementById("startStreamButton").addEventListener("click", () => {
+      alert("The stream has started!");
+      // Start Stream Logic Here
+    });
+
+    document.getElementById("stopStreamButton").addEventListener("click", () => {
+      alert("The stream has been stopped.");
+      // Stop Stream Logic Here
+    });
+  </script>
+</body>
+
+</html>

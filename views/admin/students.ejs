@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Macdee Entertainment | Dashboard 2</title>
+
+       <!-- Google Font: Source Sans Pro -->
+       <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+       <!-- Font Awesome Icons -->
+       <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+       <!-- overlayScrollbars -->
+       <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+       <!-- Theme style -->
+       <link rel="stylesheet" href="/dist/css/adminlte.min2167.css?v=3.2.0">
+       <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
+</head>
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+       <div class="wrapper">
+
+              <!-- Preloader -->
+              <div class="preloader flex-column justify-content-center align-items-center">
+                     <img class="animation__wobble" src="/images/Macdee.png" alt="AdminLTELogo" height="200"
+                            width="200">
+              </div>
+
+              <!-- Navbar -->
+              <nav class="main-header navbar navbar-expand navbar-dark">
+                     <!-- Left navbar links -->
+                     <ul class="navbar-nav">
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                                 class="fas fa-bars"></i></a>
+                            </li>
+                            <li class="nav-item d-none d-sm-inline-block">
+                                   <a href="/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item d-none d-sm-inline-block">
+                                   <a href="#" class="nav-link">Contact</a>
+                            </li>
+                     </ul>
+
+                     <!-- Right navbar links -->
+                     <ul class="navbar-nav ml-auto">
+                            <!-- Navbar Search -->
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                                          <i class="fas fa-search"></i>
+                                   </a>
+                                   <div class="navbar-search-block">
+                                          <form class="form-inline">
+                                                 <div class="input-group input-group-sm">
+                                                        <input class="form-control form-control-navbar" type="search"
+                                                               placeholder="Search" aria-label="Search">
+                                                        <div class="input-group-append">
+                                                               <button class="btn btn-navbar" type="submit">
+                                                                      <i class="fas fa-search"></i>
+                                                               </button>
+                                                               <button class="btn btn-navbar" type="button"
+                                                                      data-widget="navbar-search">
+                                                                      <i class="fas fa-times"></i>
+                                                               </button>
+                                                        </div>
+                                                 </div>
+                                          </form>
+                                   </div>
+                            </li>
+
+                            <!-- Messages Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                   <a class="nav-link" data-toggle="dropdown" href="#">
+                                          <i class="far fa-comments"></i>
+                                          <span class="badge badge-danger navbar-badge">3</span>
+                                   </a>
+                                   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                          <a href="#" class="dropdown-item">
+                                                 <!-- Message Start -->
+                                                 <div class="media">
+                                                        <img src="/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                                               class="img-size-50 mr-3 img-circle">
+                                                        <div class="media-body">
+                                                               <h3 class="dropdown-item-title">
+                                                                      Brad Diesel
+                                                                      <span class="float-right text-sm text-danger"><i
+                                                                                    class="fas fa-star"></i></span>
+                                                               </h3>
+                                                               <p class="text-sm">Call me whenever you can...</p>
+                                                               <p class="text-sm text-muted"><i
+                                                                             class="far fa-clock mr-1"></i> 4 Hours Ago
+                                                               </p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- Message End -->
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item">
+                                                 <!-- Message Start -->
+                                                 <div class="media">
+                                                        <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                                               class="img-size-50 img-circle mr-3">
+                                                        <div class="media-body">
+                                                               <h3 class="dropdown-item-title">
+                                                                      John Pierce
+                                                                      <span class="float-right text-sm text-muted"><i
+                                                                                    class="fas fa-star"></i></span>
+                                                               </h3>
+                                                               <p class="text-sm">I got your message bro</p>
+                                                               <p class="text-sm text-muted"><i
+                                                                             class="far fa-clock mr-1"></i> 4 Hours Ago
+                                                               </p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- Message End -->
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item">
+                                                 <!-- Message Start -->
+                                                 <div class="media">
+                                                        <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
+                                                               class="img-size-50 img-circle mr-3">
+                                                        <div class="media-body">
+                                                               <h3 class="dropdown-item-title">
+                                                                      Nora Silvester
+                                                                      <span class="float-right text-sm text-warning"><i
+                                                                                    class="fas fa-star"></i></span>
+                                                               </h3>
+                                                               <p class="text-sm">The subject goes here</p>
+                                                               <p class="text-sm text-muted"><i
+                                                                             class="far fa-clock mr-1"></i> 4 Hours Ago
+                                                               </p>
+                                                        </div>
+                                                 </div>
+                                                 <!-- Message End -->
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                                   </div>
+                            </li>
+                            <!-- Notifications Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                   <a class="nav-link" data-toggle="dropdown" href="#">
+                                          <i class="far fa-bell"></i>
+                                          <span class="badge badge-warning navbar-badge">15</span>
+                                   </a>
+                                   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                          <span class="dropdown-item dropdown-header">15 Notifications</span>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item">
+                                                 <i class="fas fa-envelope mr-2"></i> 4 new messages
+                                                 <span class="float-right text-muted text-sm">3 mins</span>
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item">
+                                                 <i class="fas fa-users mr-2"></i> 8 friend requests
+                                                 <span class="float-right text-muted text-sm">12 hours</span>
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item">
+                                                 <i class="fas fa-file mr-2"></i> 3 new reports
+                                                 <span class="float-right text-muted text-sm">2 days</span>
+                                          </a>
+                                          <div class="dropdown-divider"></div>
+                                          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                                   </div>
+                            </li>
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                          <i class="fas fa-expand-arrows-alt"></i>
+                                   </a>
+                            </li>
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
+                                          role="button">
+                                          <i class="fas fa-th-large"></i>
+                                   </a>
+                            </li>
+                     </ul>
+              </nav>
+              <!-- /.navbar -->
+
+              <!-- Main Sidebar Container -->
+              <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                     <!-- Brand Logo -->
+                     <a href="index3.html" class="brand-link">
+                            <img src="/images/Macdee.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                                   style="opacity: .8">
+                            <span class="brand-text font-bold-light">Macdee Entertainment</span>
+                     </a>
+
+                     <!-- Sidebar -->
+                     <div class="sidebar">
+                            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                                   <div class="image">
+                                          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                                                 alt="User Image">
+                                   </div>
+                                   <div class="info">
+                                          <a href="#" class="d-block">Admin</a>
+                                   </div>
+                            </div>
+
+
+
+                            <nav class="mt-2">
+                                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                       <!-- Dashboard -->
+                                       <li class="nav-item menu-open">
+                                           <a href="/admin/dashboard" class="nav-link active">
+                                               <i class="nav-icon fas fa-tachometer-alt"></i>
+                                               <p>Dashboard</p>
+                                           </a>
+                                       </li>
+                               
+                                       <!-- Macdee Entertainment Section -->
+                                       <li class="nav-header">MACDEE ENTERTAINMENT</li>
+                               
+                                       <!-- Grouped Services under Macdee Entertainment -->
+                                       <li class="nav-item has-treeview">
+                                           <a href="#" class="nav-link">
+                                               <i class="nav-icon fas fa-headphones-alt"></i>
+                                               <p>
+                                                   Entertainment Services
+                                                   <i class="right fas fa-angle-left"></i>
+                                               </p>
+                                           </a>
+                                           <ul class="nav nav-treeview">
+                                               <!-- MC & DJ Services -->
+                                               <li class="nav-item">
+                                                   <a href="services/mc-dj.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-microphone"></i>
+                                                       <p>MC & DJ</p>
+                                                   </a>
+                                               </li>
+                               
+                                               <!-- Sound & Lighting Rentals -->
+                                               <li class="nav-item">
+                                                   <a href="services/sound-lighting.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-signal"></i>
+                                                       <p>Sound & Lighting</p>
+                                                   </a>
+                                               </li>
+                               
+                                               <!-- Photography & Videography -->
+                                               <li class="nav-item">
+                                                   <a href="services/photography-videography.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-camera"></i>
+                                                       <p>Photography</p>
+                                                   </a>
+                                               </li>
+                               
+                                               <!-- Live Streaming -->
+                                               <li class="nav-item">
+                                                   <a href="services/live-streaming.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-video"></i>
+                                                       <p>Streaming</p>
+                                                   </a>
+                                               </li>
+                               
+                                               <!-- Event Planning & Coordination -->
+                                               <li class="nav-item">
+                                                   <a href="services/event-planning.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-calendar-alt"></i>
+                                                       <p>Event Planning</p>
+                                                   </a>
+                                               </li>
+                               
+                                               <!-- Event Booking -->
+                                               <li class="nav-item">
+                                                   <a href="services/booking.html" class="nav-link">
+                                                       <i class="nav-icon fas fa-book"></i>
+                                                       <p>Bookings</p>
+                                                   </a>
+                                               </li>
+                                           </ul>
+                               
+                                           <!-- Transactions Link -->
+                                           <li class="nav-item">
+                                               <a href="finance/transactions.html" class="nav-link">
+                                                   <i class="nav-icon fas fa-exchange-alt"></i>
+                                                   <p>Transactions</p>
+                                               </a>
+                                           </li>
+                                       </li>
+                               
+                                       <!-- DJ Academy Section -->
+                                       <li class="nav-header">DJ ACADEMY</li>
+                               
+                                       <!-- DJ Academy Links -->
+                                       <li class="nav-item">
+                                           <a href="dj-academy/programs.html" class="nav-link">
+                                               <i class="nav-icon fas fa-cogs"></i>
+                                               <p>Programs</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="/students" class="nav-link">
+                                               <i class="nav-icon fas fa-user-plus"></i>
+                                               <p>Students</p>
+                                           </a>
+                                       </li>
+                               
+                                       <!-- Notifications Link -->
+                                       <li class="nav-item">
+                                           <a href="dj-academy/enroll.html" class="nav-link">
+                                               <i class="nav-icon fas fa-bell"></i>
+                                               <p>Notifications</p>
+                                           </a>
+                                       </li>
+                               
+                                       <!-- Transactions Link under DJ Academy -->
+                                       <li class="nav-item">
+                                           <a href="dj-academy/transactions.html" class="nav-link">
+                                               <i class="nav-icon fas fa-exchange-alt"></i>
+                                               <p>Transactions</p>
+                                           </a>
+                                       </li>
+                               
+                                       <!-- Finance Section -->
+                                       <li class="nav-header">FINANCE</li>
+                               
+                                       <!-- Finance Links -->
+                                       <li class="nav-item">
+                                           <a href="finance/overview.html" class="nav-link">
+                                               <i class="nav-icon fas fa-dollar-sign"></i>
+                                               <p>Overview</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="finance/transactions.html" class="nav-link">
+                                               <i class="nav-icon fas fa-exchange-alt"></i>
+                                               <p>Transactions</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="finance/reports.html" class="nav-link">
+                                               <i class="nav-icon fas fa-chart-line"></i>
+                                               <p>Reports</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="finance/payment-settings.html" class="nav-link">
+                                               <i class="nav-icon fas fa-cogs"></i>
+                                               <p>Payments</p>
+                                           </a>
+                                       </li>
+                               
+                                       <!-- Store Section -->
+                                       <li class="nav-header">STORE</li>
+                               
+                                       <!-- Store Links -->
+                                       <li class="nav-item">
+                                           <a href="store/products.html" class="nav-link">
+                                               <i class="nav-icon fas fa-cube"></i>
+                                               <p>Products</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="store/cart.html" class="nav-link">
+                                               <i class="nav-icon fas fa-shopping-cart"></i>
+                                               <p>Shopping Cart</p>
+                                           </a>
+                                       </li>
+                               
+                                       <li class="nav-item">
+                                           <a href="store/checkout.html" class="nav-link">
+                                               <i class="nav-icon fas fa-credit-card"></i>
+                                               <p>Checkout</p>
+                                           </a>
+                                       </li>
+                                   </ul>
+                               </nav>             
+                     </div>
+              </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+
+<!-- Main content -->
+<section class="content">
+
+       <% if (message && message.length > 0) { %>
+    <div class="alert alert-success">
+        <%= message[0] %> <!-- Display the first success message -->
+    </div>
+<% } %>
+
+<% if (errorMessage && errorMessage.length > 0) { %>
+    <div class="alert alert-danger">
+        <%= errorMessage[0] %> <!-- Display the first error message -->
+    </div>
+<% } %>
+
+   
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#enrollStudentModal">
+       <i class="fas fa-user-plus"></i> Enroll New Student
+    </button>
+    
+<!-- Default box -->
+<div class="card">
+       <div class="card-header">
+         <h3 class="card-title">Students</h3>
+         <div class="card-tools">
+           <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+             <i class="fas fa-minus"></i>
+           </button>
+         </div>
+       </div>
+       <div class="card-body p-0">
+         <div class="table-responsive">
+           <table class="table table-striped table-hover table-sm">
+             <thead>
+               <tr>
+                 <th style="width: 4%">#</th>
+                 <th style="width: 12%">Student Name</th>
+                 <th style="width: 12%">Email</th>
+                 <th style="width: 8%">Admission Number</th>
+                 <th style="width: 8%">Phone Number</th>
+                 <th style="width: 8%">Program</th>
+                 <th style="width: 12%">Enrollment Date</th>
+                 <th style="width: 8%">Paid Fee</th>
+                 <th style="width: 10%">Actions</th>
+               </tr>
+             </thead>
+             <tbody>
+              <% studentsList.forEach(function(student, index) { %>
+                     <tr>
+                       <td><%= (currentPage - 1) * 10 + index + 1 %></td>
+                       <td><%= student.name %></td>
+                       <td><%= student.email %></td>
+                       <td><%= student.admissionNumber %></td>
+                       <td><%= student.phoneNumber %></td>
+                       <td><%= student.program %></td>
+                       <td><%= student.formattedCreatedAt %></td>
+                       <td>KSh <%= student.paidFee.toLocaleString() %></td>
+
+
+                       <td class="text-right">
+                            <div class="d-flex justify-content-between">
+                              <!-- View Button -->
+                              <a class="btn btn-primary btn-sm" style="width: 40px;" data-toggle="modal" data-target="#viewModal<%= student.id %>">
+                                <i class="fas fa-folder"></i>
+                              </a>
+                          
+                              <!-- Edit Button -->
+                              <a class="btn btn-info btn-sm" style="width: 40px;" data-toggle="modal" data-target="#editModal<%= student.id %>">
+                                <i class="fas fa-pencil-alt"></i>
+                              </a>
+                          
+                              <!-- Delete Button -->
+                              <a class="btn btn-danger btn-sm" style="width: 40px;" data-toggle="modal" data-target="#deleteModal<%= student.id %>">
+                                <i class="fas fa-trash"></i>
+                              </a>
+                            </div>
+                          </td>
+                          
+                          <!-- View Modal -->
+                          <div class="modal fade" id="viewModal<%= student.id %>" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel<%= student.id %>" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="viewModalLabel<%= student.id %>">View Student</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                          <p><strong>Name: <%= student.name %></strong></p>
+                                          <p><strong>Email:</strong> <%= student.email %></p>
+                                          <p><strong>Admission Number:</strong> <%= student.admissionNumber %></p>
+                                          <p><strong>ID Number:</strong> <%= student.idNumber %></p>
+                                          <p><strong>Date of Birth:</strong> <%= new Date(student.dateOfBirth).toLocaleDateString() %></p>
+                                          <p><strong>Next of Kin:</strong></p>
+                                          <p><strong>Name:</strong> <%= student.nextOfKin.name %></p>
+                                          <p><strong>Contact:</strong> <%= student.nextOfKin.contact %></p>
+                                          <p><strong>Phone Number:</strong> <%= student.phoneNumber %></p>
+                                          <p><strong>Program:</strong> <%= student.program %></p>
+                                          <p><strong>Expected Fee:</strong> KSh <%= student.expectedFee.toLocaleString() %></p>
+                                          <p><strong>Paid Fee:</strong> KSh <%= student.paidFee.toLocaleString() %></p>
+                                          <p><strong>Enrollment Date:</strong> <%= new Date(student.enrollmentDate).toLocaleDateString() %></p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Edit Modal -->
+                          <div class="modal fade" id="editModal<%= student.id %>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel<%= student.id %>" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editModalLabel<%= student.id %>">Edit Student</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <form action="/admin/students/edit/<%= student.id %>" method="POST">
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <!-- Left Column -->
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label for="studentName<%= student.id %>">Name</label>
+                                          <input type="text" class="form-control" id="studentName<%= student.id %>" name="name" value="<%= student.name %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentEmail<%= student.id %>">Email</label>
+                                          <input type="email" class="form-control" id="studentEmail<%= student.id %>" name="email" value="<%= student.email %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentIDNumber<%= student.id %>">ID Number</label>
+                                          <input type="text" class="form-control" id="studentIDNumber<%= student.id %>" name="idNumber" value="<%= student.idNumber %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentDOB<%= student.id %>">Date of Birth</label>
+                                          <input type="date" class="form-control" id="studentDOB<%= student.id %>" name="dateOfBirth" value="<%= student.dateOfBirth.toISOString().split('T')[0] %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="nextOfKinName<%= student.id %>">Next of Kin Name</label>
+                                          <input type="text" class="form-control" id="nextOfKinName<%= student.id %>" name="nextOfKinName" value="<%= student.nextOfKin.name %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="nextOfKinContact<%= student.id %>">Next of Kin Contact</label>
+                                          <input type="text" class="form-control" id="nextOfKinContact<%= student.id %>" name="nextOfKinContact" value="<%= student.nextOfKin.contact %>" required>
+                                        </div>
+                                      </div>
+                          
+                                      <!-- Right Column -->
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label for="studentPhone<%= student.id %>">Phone Number</label>
+                                          <input type="text" class="form-control" id="studentPhone<%= student.id %>" name="phoneNumber" value="<%= student.phoneNumber %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentProgram<%= student.id %>">Program</label>
+                                          <input type="text" class="form-control" id="studentProgram<%= student.id %>" name="program" value="<%= student.program %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentExpectedFee<%= student.id %>">Expected Fee</label>
+                                          <input type="number" class="form-control" id="studentExpectedFee<%= student.id %>" name="expectedFee" value="<%= student.expectedFee %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentPaidFee<%= student.id %>">Paid Fee</label>
+                                          <input type="number" class="form-control" id="studentPaidFee<%= student.id %>" name="paidFee" value="<%= student.paidFee %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="studentEnrollmentDate<%= student.id %>">Enrollment Date</label>
+                                          <input type="date" class="form-control" id="studentEnrollmentDate<%= student.id %>" name="enrollmentDate" value="<%= student.enrollmentDate.toISOString().split('T')[0] %>">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-info">Save Changes</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          
+     
+                          
+                          <!-- Delete Modal -->
+                          <div class="modal fade" id="deleteModal<%= student.id %>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel<%= student.id %>" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="deleteModalLabel<%= student.id %>">Delete Student</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Are you sure you want to delete <%= student.name %>? This action cannot be undone.</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                  <a href="/admin/students/delete/<%= student.id %>" class="btn btn-danger">Delete</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                                          
+                     </tr>
+                   <% }) %>
+                   
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+     
+     <!-- Pagination -->
+     <div class="pagination-container">
+       <% if (currentPage > 1) { %>
+         <a class="pagination-btn" href="/admin/students?page=<%= currentPage - 1 %>">Previous</a>
+       <% } %>
+       <span class="pagination-info">Page <%= currentPage %> of <%= totalPages %></span>
+       <% if (currentPage < totalPages) { %>
+         <a class="pagination-btn" href="/admin/students?page=<%= currentPage + 1 %>">Next</a>
+       <% } %>
+     </div>
+     
+     <p>Total Students: <%= totalStudents %></p>
+     
+     <style>
+       /* Table Styling */
+       .table {
+         border-radius: 10px;
+         border: 1px solid #ddd;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+       }
+     
+       .table-hover tbody tr:hover {
+         background-color: #f1f1f1; /* Highlight row on hover */
+       }
+     
+       .table th, .table td {
+         text-align: center;
+         padding: 12px 15px;
+         font-size: 14px;
+       }
+     
+       /* Action Buttons Styling */
+       .action-btn {
+         width: 40px;
+         padding: 8px;
+         border-radius: 5px;
+         transition: all 0.3s ease;
+       }
+     
+       .action-btn:hover {
+         transform: scale(1.1);
+       }
+     
+       .pagination-container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-top: 20px;
+       }
+     
+       .pagination-btn {
+         padding: 8px 15px;
+         margin: 0 10px;
+         background-color: #4CAF50;
+         color: white;
+         border-radius: 5px;
+         text-decoration: none;
+         transition: background-color 0.3s;
+       }
+     
+       .pagination-btn:hover {
+         background-color: #45a049;
+       }
+     
+       .pagination-info {
+         font-size: 14px;
+         color: #555;
+       }
+     
+       /* Responsive Adjustments */
+       @media (max-width: 768px) {
+         .table-responsive {
+           -webkit-overflow-scrolling: touch;
+         }
+         table {
+           font-size: 5px; /* Reduce font size */
+         }
+         th, td {
+           padding: 2px; /* Reduce padding */
+         }
+         .d-flex {
+           flex-direction: column; /* Stack buttons on top of each other */
+         }
+         .d-flex a {
+           margin-bottom: 5px; /* Space between buttons */
+           width: 100%; /* Full-width buttons */
+         }
+     
+         .pagination-container {
+           flex-direction: column;
+           text-align: center;
+         }
+       }
+     </style>
+     
+     
+     
+     
+<!-- Add Student Modal -->
+<div class="modal fade" id="enrollStudentModal" tabindex="-1" role="dialog" aria-labelledby="enrollStudentModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="enrollStudentModalLabel">Enroll New Student</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <form id="enrollStudentForm" action="/admin/students" method="POST">
+               <!-- Row for Columns -->
+               <div class="row">
+                 <!-- Column 1 -->
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+                     <input type="text" class="form-control" id="studentName" name="name" placeholder="Enter student name" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="studentEmail"><i class="fas fa-envelope"></i> Email</label>
+                     <input type="email" class="form-control" id="studentEmail" name="email" placeholder="Enter email address" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="idNumber"><i class="fas fa-id-card"></i> ID Number</label>
+                     <input type="text" class="form-control" id="idNumber" name="idNumber" placeholder="Enter ID number" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="nextOfKinName"><i class="fas fa-user-friends"></i> Next of Kin</label>
+                     <input type="text" class="form-control" id="nextOfKinName" name="nextOfKin[name]" placeholder="Enter next of kin name" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="nextOfKinPhone"><i class="fas fa-user-friends"></i> Next of Kin Phone</label>
+                     <input type="text" class="form-control" id="nextOfKinPhone" name="nextOfKin[contact]" placeholder="Enter next of kin phone number" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="gender"><i class="fas fa-venus-mars"></i> Students Gender</label>
+                     <select class="form-control" id="gender" name="gender" required>
+                       <option value="Male">Male</option>
+                       <option value="Female">Female</option>
+                     </select>
+                   </div>
+                 </div>
+                 <!-- Column 2 -->
+                 <div class="col-md-6">
+                   <div class="form-group">
+                     <label for="phoneNumber"><i class="fas fa-phone"></i> Phone Number</label>
+                     <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="dateOfBirth"><i class="fas fa-calendar"></i> Date of Birth</label>
+                     <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="program"><i class="fas fa-graduation-cap"></i> Program</label>
+                     <input type="text" class="form-control" id="program" name="program" placeholder="Enter program" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="expectedFee"><i class="fas fa-dollar-sign"></i> Expected Fee</label>
+                     <input type="number" class="form-control" id="expectedFee" name="expectedFee" placeholder="Enter expected fee amount" required>
+                   </div>
+                   <div class="form-group">
+                     <label for="paidFee"><i class="fas fa-wallet"></i> Paid Fee</label>
+                     <input type="number" class="form-control" id="paidFee" name="paidFee" placeholder="Enter paid fee amount" required>
+                   </div>
+                 </div>
+               </div>
+             </form>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-info" form="enrollStudentForm">Enroll Student</button>
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     
+
+     
+     </section>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 1.0.1
+    </div>
+    <strong>Copyright &copy; 2024 <a href="https://macdeeentertainment.com">Macdee Entertainment</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min2167.js?v=3.2.0"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+
+<!-- Mirrored from adminlte.io/themes/v3/pages/examples/projects.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Nov 2024 09:31:14 GMT -->
+</html>

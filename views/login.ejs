@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup/Login</title>
+    <title>Authentication</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
     <style>
@@ -220,7 +220,7 @@
               <% }) %>
           <% } %>
 
-            <h2><strong>Login to continue</strong></h2>
+            <h2><strong>Sign in to continue</strong></h2>
             <form action="/login" method="POST">
               <div class="input-group">
                   <label for="login-email">Email</label>
@@ -231,7 +231,7 @@
                   <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
                   <i class="fas fa-eye toggle-password" onclick="togglePassword('login-password')"></i>
               </div>
-              <button type="submit">Login</button>
+              <button type="submit">Sign in</button>
               <p class="switch-text">Don't have an account? <span id="switch-to-signup">Sign Up</span></p>
           </form>
           
@@ -259,7 +259,7 @@
                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
            </div>
            <button type="submit">Sign Up</button>
-           <p class="switch-text">Already have an account? <span id="switch-to-login">Login</span></p>
+           <p class="switch-text">Already have an account? <span id="switch-to-login">Sign in</span></p>
        </form>
    </div>
    
@@ -270,14 +270,14 @@
         const signupForm = document.getElementById('signup-form');
         const formToggle = document.getElementById('form-toggle');
         const switchToSignup = document.getElementById('switch-to-signup');
-        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToLogin = document.getElementById('switch-to-signin');
 
         // Function to toggle between forms
         const toggleForms = () => {
             const isLoginVisible = loginForm.style.display !== 'none';
             loginForm.style.display = isLoginVisible ? 'none' : 'block';
             signupForm.style.display = isLoginVisible ? 'block' : 'none';
-            formToggle.textContent = isLoginVisible ? 'Switch to Login' : 'Switch to Sign Up';
+            formToggle.textContent = isLoginVisible ? 'Switch to sign in' : 'Switch to Sign Up';
         };
 
         // Event listener for the toggle button

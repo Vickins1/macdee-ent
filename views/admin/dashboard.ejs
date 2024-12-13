@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Macdee Entertainment | Dashboard 2</title>
+
+       <!-- Google Font: Source Sans Pro -->
+       <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+       <!-- Font Awesome Icons -->
+       <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+       <!-- overlayScrollbars -->
+       <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+       <!-- Theme style -->
+       <link rel="stylesheet" href="/dist/css/adminlte.min2167.css?v=3.2.0">
+       <link rel="icon" type="image/png" sizes="64x64" href="/images/Icon.png">
+</head>
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+       <div class="wrapper">
+
+              <!-- Preloader -->
+              <div class="preloader flex-column justify-content-center align-items-center">
+                     <img class="animation__wobble" src="/images/Macdee.png" alt="AdminLTELogo" height="200"
+                            width="200">
+              </div>
+
+              <!-- Navbar -->
+              <nav class="main-header navbar navbar-expand navbar-dark">
+                     <!-- Left navbar links -->
+                     <ul class="navbar-nav">
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                                 class="fas fa-bars"></i></a>
+                            </li>
+                            <li class="nav-item d-none d-sm-inline-block">
+                                   <a href="/" class="nav-link">Home</a>
+                            </li>
+                     </ul>
+
+                     <!-- Right navbar links -->
+                     <ul class="navbar-nav ml-auto">
+                            <!-- Messages Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                   <a class="nav-link" data-toggle="dropdown" href="#">
+                                          <i class="far fa-comments"></i>
+                                          <span class="badge badge-danger navbar-badge">
+                                                 <%= user.messageCount %>
+                                          </span>
+                                   </a>
+                                   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                          <% if (user && user.messages && Array.isArray(user.messages)) { %>
+                                                 <% user.messages.forEach(message=> { %>
+                                                        <a href="#" class="dropdown-item">
+                                                               <div class="media">
+                                                                      <img src="<%= message.avatar %>" alt="User Avatar"
+                                                                             class="img-size-50 mr-3 img-circle">
+                                                                      <div class="media-body">
+                                                                             <h3 class="dropdown-item-title">
+                                                                                    <%= message.sender %>
+                                                                             </h3>
+                                                                             <p class="text-sm">
+                                                                                    <%= message.content %>
+                                                                             </p>
+                                                                      </div>
+                                                               </div>
+                                                        </a>
+                                                        <% }); %>
+                                                               <% } else { %>
+                                                                      <p>No messages available.</p>
+                                                                      <% } %>
+                                   </div>
+                            </li>
+
+
+                            <!-- Notifications Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                   <a class="nav-link" data-toggle="dropdown" href="#">
+                                          <i class="far fa-bell"></i>
+                                          <span class="badge badge-warning navbar-badge">
+                                                 <%= user.notificationCount %>
+                                          </span>
+                                   </a>
+                                   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                          <span class="dropdown-item dropdown-header">
+                                                 <%= user.notificationCount %> Notifications
+                                          </span>
+                                          <% if (user && user.notifications && Array.isArray(user.notifications)) { %>
+                                                 <span class="dropdown-item dropdown-header">
+                                                        <%= user.notificationCount %> Notifications
+                                                 </span>
+                                                 <% user.notifications.forEach(notification=> { %>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a href="#" class="dropdown-item">
+                                                               <i class="<%= notification.icon %> mr-2"></i>
+                                                               <%= notification.content %>
+                                                        </a>
+                                                        <% }); %>
+                                                               <% } else { %>
+                                                                      <p>No notifications available.</p>
+                                                                      <% } %>
+
+                                   </div>
+                            </li>
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                          <i class="fas fa-expand-arrows-alt"></i>
+                                   </a>
+                            </li>
+                            <li class="nav-item">
+                                   <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"
+                                          role="button">
+                                          <i class="fas fa-th-large"></i>
+                                   </a>
+                            </li>
+                     </ul>
+              </nav>
+
+
+              <!-- Main Sidebar Container -->
+              <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                     <!-- Brand Logo -->
+                     <a href="index3.html" class="brand-link">
+                            <img src="/images/Macdee.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                                   style="opacity: .8">
+                            <span class="brand-text font-bold-light">Macdee Entertainment</span>
+                     </a>
+
+                     <!-- Sidebar -->
+                     <div class="sidebar">
+                            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                                   <div class="image">
+                                          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                                                 alt="User Image">
+                                   </div>
+                                   <div class="info">
+                                          <a href="#" class="d-block"><strong>
+                                                        <%= user.username %>
+                                                 </strong></a>
+                                   </div>
+                            </div>
+
+                            <nav class="mt-2">
+                                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                          data-accordion="false">
+                                          <!-- Dashboard -->
+                                          <li class="nav-item menu-open">
+                                                 <a href="/admin/dashboard" class="nav-link active">
+                                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                                        <p>Dashboard</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- Macdee Entertainment Section -->
+                                          <li class="nav-header">MACDEE ENTERTAINMENT</li>
+
+                                          <!-- Grouped Services under Macdee Entertainment -->
+                                          <li class="nav-item has-treeview">
+                                                 <a href="#" class="nav-link">
+                                                        <i class="nav-icon fas fa-headphones-alt"></i>
+                                                        <p>
+                                                               Entertainment Services
+                                                               <i class="right fas fa-angle-left"></i>
+                                                        </p>
+                                                 </a>
+
+                                                 <ul class="nav nav-treeview">
+                                                        <!-- MC & DJ Services -->
+                                                        <li class="nav-item">
+                                                               <a href="services/mc-dj.html" class="nav-link">
+                                                                      <i class="nav-icon fas fa-microphone"></i>
+                                                                      <p>MC & DJ</p>
+                                                               </a>
+                                                        </li>
+
+                                                        <!-- Sound & Lighting Rentals -->
+                                                        <li class="nav-item">
+                                                               <a href="services/sound-lighting.html" class="nav-link">
+                                                                      <i class="nav-icon fas fa-signal"></i>
+                                                                      <p>Sound & Lighting</p>
+                                                               </a>
+                                                        </li>
+
+                                                        <!-- Event Planning & Coordination -->
+                                                        <li class="nav-item">
+                                                               <a href="services/event-planning.html" class="nav-link">
+                                                                      <i class="nav-icon fas fa-calendar-alt"></i>
+                                                                      <p>Event Planning</p>
+                                                               </a>
+                                                        </li>
+
+                                                        <!-- Event Booking -->
+                                                        <li class="nav-item">
+                                                               <a href="services/booking.html" class="nav-link">
+                                                                      <i class="nav-icon fas fa-book"></i>
+                                                                      <p>Bookings</p>
+                                                               </a>
+                                                        </li>
+                                                 </ul>
+
+                                                 <!-- Live Streaming -->
+                                          <li class="nav-item">
+                                                 <a href="/admin/stream" class="nav-link">
+                                                        <i class="nav-icon fas fa-video"></i>
+                                                        <p>Streaming</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-header">PHOTOGRAPHY</li>
+
+                                          <!-- Photography & Videography -->
+                                          <li class="nav-item">
+                                                 <a href="services/photography-videography.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-camera"></i>
+                                                        <p>Photoshoots</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- DJ Academy Section -->
+                                          <li class="nav-header">DJ ACADEMY</li>
+
+                                          <!-- DJ Academy Links -->
+                                          <li class="nav-item">
+                                                 <a href="dj-academy/programs.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-cogs"></i>
+                                                        <p>Programs</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="/admin/students" class="nav-link">
+                                                        <i class="nav-icon fas fa-user-plus"></i>
+                                                        <p>Students</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- Notifications Link -->
+                                          <li class="nav-item">
+                                                 <a href="dj-academy/enroll.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-bell"></i>
+                                                        <p>Notifications</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- Finance Section -->
+                                          <li class="nav-header">FINANCE</li>
+
+                                          <!-- Finance Links -->
+                                          <li class="nav-item">
+                                                 <a href="finance/overview.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-dollar-sign"></i>
+                                                        <p>Overview</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="finance/reports.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-chart-line"></i>
+                                                        <p>Reports</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="finance/payment-settings.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-cogs"></i>
+                                                        <p>Payments</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- Transactions Link under DJ Academy -->
+                                          <li class="nav-item">
+                                                 <a href="dj-academy/transactions.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-exchange-alt"></i>
+                                                        <p>Transactions</p>
+                                                 </a>
+                                          </li>
+
+                                          <!-- Store Section -->
+                                          <li class="nav-header">STORE</li>
+
+                                          <!-- Store Links -->
+                                          <li class="nav-item">
+                                                 <a href="store/products.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-cube"></i>
+                                                        <p>Products</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="store/cart.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-shopping-cart"></i>
+                                                        <p>Shopping Cart</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="store/checkout.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-credit-card"></i>
+                                                        <p>Checkout</p>
+                                                 </a>
+                                          </li>
+                                          <!-- Settings Section -->
+                                          <li class="nav-header">SETTINGS</li>
+
+                                          <li class="nav-item">
+                                                 <a href="settings/general.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-cogs"></i>
+                                                        <p>General Settings</p>
+                                                 </a>
+                                          </li>
+
+                                          <li class="nav-item">
+                                                 <a href="settings/security.html" class="nav-link">
+                                                        <i class="nav-icon fas fa-lock"></i>
+                                                        <p>Security Settings</p>
+                                                 </a>
+                                          </li>
+                                   </ul>
+                                   </ul>
+                            </nav>
+
+                     </div>
+              </aside>
+
+
+              <!-- Content Wrapper. Contains page content -->
+              <div class="content-wrapper">
+
+
+                     <!-- Main content -->
+                     <section class="content">
+                            <div class="container-fluid">
+                                   <!-- Info boxes -->
+                                   <div class="row">
+                                          <!-- MC & DJ Services -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="mcDjevents">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-info elevation-1"><i
+                                                                      class="fas fa-headphones-alt"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">MC & DJ Events</span>
+                                                               <span class="info-box-number"
+                                                                      id="mcDjeventsNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Sound & Lighting Rentals -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="soundLighting">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-warning elevation-1"><i
+                                                                      class="fas fa-lightbulb"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Sound & Lighting
+                                                                      Rentals</span>
+                                                               <span class="info-box-number"
+                                                                      id="soundLightingNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Photography & Videography -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="photoshoots">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-danger elevation-1"><i
+                                                                      class="fas fa-camera"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Photoshoots</span>
+                                                               <span class="info-box-number"
+                                                                      id="photoshootsNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Live Streaming -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="liveStreams">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-success elevation-1"><i
+                                                                      class="fas fa-broadcast-tower"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Live Streams</span>
+                                                               <span class="info-box-number"
+                                                                      id="liveStreamsNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Corporate Events -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="corporateEvents">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-primary elevation-1"><i
+                                                                      class="fas fa-briefcase"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Corporate Events</span>
+                                                               <span class="info-box-number"
+                                                                      id="corporateEventsNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Stage Productions -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="stageProductions">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-teal elevation-1"><i
+                                                                      class="fas fa-theater-masks"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Stage Productions</span>
+                                                               <span class="info-box-number"
+                                                                      id="stageProductionsNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- Event Themes & Decor -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="themesDecor">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-purple elevation-1"><i
+                                                                      class="fas fa-paint-brush"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">Themes & Decor</span>
+                                                               <span class="info-box-number"
+                                                                      id="themesDecorNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+
+                                          <!-- DJ Academy -->
+                                          <div class="col-12 col-sm-6 col-md-3" id="djAcademy">
+                                                 <div class="info-box">
+                                                        <span class="info-box-icon bg-secondary elevation-1"><i
+                                                                      class="fas fa-graduation-cap"></i></span>
+                                                        <div class="info-box-content">
+                                                               <span class="info-box-text">DJ Academy</span>
+                                                               <span class="info-box-number"
+                                                                      id="djAcademyNumber">0</span>
+                                                               <!-- Dynamic number here -->
+                                                        </div>
+                                                 </div>
+                                          </div>
+                                   </div>
+                            </div>
+
+                         <!-- Main content -->
+    <div class="content">
+       <div class="container-fluid">
+         <div class="row">
+           <div class="col-lg-6">
+             <div class="card">
+               <div class="card-header border-0">
+                 <div class="d-flex justify-content-between">
+                   <h3 class="card-title">Online Store Visitors</h3>
+                   <a href="javascript:void(0);">View Report</a>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <div class="d-flex">
+                   <p class="d-flex flex-column">
+                     <span class="text-bold text-lg">820</span>
+                     <span>Visitors Over Time</span>
+                   </p>
+                   <p class="ml-auto d-flex flex-column text-right">
+                     <span class="text-success">
+                       <i class="fas fa-arrow-up"></i> 12.5%
+                     </span>
+                     <span class="text-muted">Since last week</span>
+                   </p>
+                 </div>
+                 <!-- /.d-flex -->
+ 
+                 <div class="position-relative mb-4">
+                   <canvas id="visitors-chart" height="200"></canvas>
+                 </div>
+ 
+                 <div class="d-flex flex-row justify-content-end">
+                   <span class="mr-2">
+                     <i class="fas fa-square text-primary"></i> This Week
+                   </span>
+ 
+                   <span>
+                     <i class="fas fa-square text-gray"></i> Last Week
+                   </span>
+                 </div>
+               </div>
+             </div>
+             <!-- /.card -->
+ 
+             <div class="card">
+               <div class="card-header border-0">
+                 <h3 class="card-title">Products</h3>
+                 <div class="card-tools">
+                   <a href="#" class="btn btn-tool btn-sm">
+                     <i class="fas fa-download"></i>
+                   </a>
+                   <a href="#" class="btn btn-tool btn-sm">
+                     <i class="fas fa-bars"></i>
+                   </a>
+                 </div>
+               </div>
+               <div class="card-body table-responsive p-0">
+                 <table class="table table-striped table-valign-middle">
+                   <thead>
+                   <tr>
+                     <th>Product</th>
+                     <th>Price</th>
+                     <th>Sales</th>
+                     <th>More</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr>
+                     <td>
+                       <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                       Some Product
+                     </td>
+                     <td>$13 USD</td>
+                     <td>
+                       <small class="text-success mr-1">
+                         <i class="fas fa-arrow-up"></i>
+                         12%
+                       </small>
+                       12,000 Sold
+                     </td>
+                     <td>
+                       <a href="#" class="text-muted">
+                         <i class="fas fa-search"></i>
+                       </a>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                       Another Product
+                     </td>
+                     <td>$29 USD</td>
+                     <td>
+                       <small class="text-warning mr-1">
+                         <i class="fas fa-arrow-down"></i>
+                         0.5%
+                       </small>
+                       123,234 Sold
+                     </td>
+                     <td>
+                       <a href="#" class="text-muted">
+                         <i class="fas fa-search"></i>
+                       </a>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                       Amazing Product
+                     </td>
+                     <td>$1,230 USD</td>
+                     <td>
+                       <small class="text-danger mr-1">
+                         <i class="fas fa-arrow-down"></i>
+                         3%
+                       </small>
+                       198 Sold
+                     </td>
+                     <td>
+                       <a href="#" class="text-muted">
+                         <i class="fas fa-search"></i>
+                       </a>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                       Perfect Item
+                       <span class="badge bg-danger">NEW</span>
+                     </td>
+                     <td>$199 USD</td>
+                     <td>
+                       <small class="text-success mr-1">
+                         <i class="fas fa-arrow-up"></i>
+                         63%
+                       </small>
+                       87 Sold
+                     </td>
+                     <td>
+                       <a href="#" class="text-muted">
+                         <i class="fas fa-search"></i>
+                       </a>
+                     </td>
+                   </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+             <!-- /.card -->
+           </div>
+           <!-- /.col-md-6 -->
+           <div class="col-lg-6">
+             <div class="card">
+               <div class="card-header border-0">
+                 <div class="d-flex justify-content-between">
+                   <h3 class="card-title">Sales</h3>
+                   <a href="javascript:void(0);">View Report</a>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <div class="d-flex">
+                   <p class="d-flex flex-column">
+                     <span class="text-bold text-lg">$18,230.00</span>
+                     <span>Sales Over Time</span>
+                   </p>
+                   <p class="ml-auto d-flex flex-column text-right">
+                     <span class="text-success">
+                       <i class="fas fa-arrow-up"></i> 33.1%
+                     </span>
+                     <span class="text-muted">Since last month</span>
+                   </p>
+                 </div>
+                 <!-- /.d-flex -->
+ 
+                 <div class="position-relative mb-4">
+                   <canvas id="sales-chart" height="200"></canvas>
+                 </div>
+ 
+                 <div class="d-flex flex-row justify-content-end">
+                   <span class="mr-2">
+                     <i class="fas fa-square text-primary"></i> This year
+                   </span>
+ 
+                   <span>
+                     <i class="fas fa-square text-gray"></i> Last year
+                   </span>
+                 </div>
+               </div>
+             </div>
+             <!-- /.card -->
+ 
+             <div class="card">
+               <div class="card-header border-0">
+                 <h3 class="card-title">Online Store Overview</h3>
+                 <div class="card-tools">
+                   <a href="#" class="btn btn-sm btn-tool">
+                     <i class="fas fa-download"></i>
+                   </a>
+                   <a href="#" class="btn btn-sm btn-tool">
+                     <i class="fas fa-bars"></i>
+                   </a>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                   <p class="text-success text-xl">
+                     <i class="ion ion-ios-refresh-empty"></i>
+                   </p>
+                   <p class="d-flex flex-column text-right">
+                     <span class="font-weight-bold">
+                       <i class="ion ion-android-arrow-up text-success"></i> 12%
+                     </span>
+                     <span class="text-muted">CONVERSION RATE</span>
+                   </p>
+                 </div>
+                 <!-- /.d-flex -->
+                 <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                   <p class="text-warning text-xl">
+                     <i class="ion ion-ios-cart-outline"></i>
+                   </p>
+                   <p class="d-flex flex-column text-right">
+                     <span class="font-weight-bold">
+                       <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
+                     </span>
+                     <span class="text-muted">SALES RATE</span>
+                   </p>
+                 </div>
+                 <!-- /.d-flex -->
+                 <div class="d-flex justify-content-between align-items-center mb-0">
+                   <p class="text-danger text-xl">
+                     <i class="ion ion-ios-people-outline"></i>
+                   </p>
+                   <p class="d-flex flex-column text-right">
+                     <span class="font-weight-bold">
+                       <i class="ion ion-android-arrow-down text-danger"></i> 1%
+                     </span>
+                     <span class="text-muted">REGISTRATION RATE</span>
+                   </p>
+                 </div>
+                 <!-- /.d-flex -->
+               </div>
+             </div>
+           </div>
+           <!-- /.col-md-6 -->
+         </div>
+         <!-- /.row -->
+       </div>
+       <!-- /.container-fluid -->
+     </div>
+
+
+
+                     <!-- TABLE: LATEST BOOKINGS -->
+                     <div class="card">
+                            <div class="card-header border-transparent">
+                                   <h3 class="card-title">Latest Bookings</h3>
+                                   <div class="card-tools">
+                                          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                 <i class="fas fa-minus"></i>
+                                          </button>
+                                          <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                 <i class="fas fa-times"></i>
+                                          </button>
+                                   </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                   <div class="table-responsive">
+                                          <table class="table m-0">
+                                                 <thead>
+                                                        <tr>
+                                                               <th>Booking ID</th>
+                                                               <th>Customer</th>
+                                                               <th>Status</th>
+                                                               <th>Date</th>
+                                                        </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                        <% bookings.forEach(booking=> { %>
+                                                               <tr>
+                                                                      <td><a href="#">
+                                                                                    <%= booking._id %>
+                                                                             </a></td>
+                                                                      <td>
+                                                                             <%= booking.customerName %>
+                                                                      </td>
+                                                                      <td>
+                                                                             <span class="badge 
+                      <%= booking.status === 'Confirmed' ? 'badge-success' 
+                          : booking.status === 'Pending' ? 'badge-warning' 
+                          : booking.status === 'Cancelled' ? 'badge-danger' 
+                          : 'badge-info' %>">
+                                                                                    <%= booking.status %>
+                                                                             </span>
+                                                                      </td>
+                                                                      <td>
+                                                                             <%= booking.date.toDateString() %>
+                                                                      </td>
+                                                               </tr>
+                                                               <% }); %>
+                                                 </tbody>
+
+                                          </table>
+                                   </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                   <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Add New
+                                          Booking</a>
+                                   <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All
+                                          Bookings</a>
+                            </div>
+                     </div>
+
+              </section>
+                     <!-- Control Sidebar -->
+                     <aside class="control-sidebar control-sidebar-dark">
+                     </aside>
+                     <!-- /.control-sidebar -->
+
+                     <!-- Main Footer -->
+                     <footer class="main-footer">
+                            <div class="float-right d-none d-sm-block">
+                                   <b>Version</b> 1.0.1
+                                 </div>
+                            <strong>Copyright &copy; 2024 <a href="https://macdeeentertainment.com/">Macdee
+                                          Entertainment</a>.</strong>
+                            All rights reserved.
+                     </footer>
+              </div>
+              <!-- ./wrapper -->
+
+              <!-- REQUIRED SCRIPTS -->
+              <!-- jQuery -->
+              <script src="/plugins/jquery/jquery.min.js"></script>
+              <!-- Bootstrap -->
+              <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+              <!-- overlayScrollbars -->
+              <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+              <!-- AdminLTE App -->
+              <script src="/dist/js/adminlte2167.js?v=3.2.0"></script>
+
+              <!-- PAGE PLUGINS -->
+              <!-- jQuery Mapael -->
+              <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+              <script src="/plugins/raphael/raphael.min.js"></script>
+              <script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+              <script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+              <!-- ChartJS -->
+              <script src="/plugins/chart.js/Chart.min.js"></script>
+
+              <!-- AdminLTE for demo purposes -->
+              <script src="/dist/js/demo.js"></script>
+              <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+              <script src="/dist/js/pages/dashboard2.js"></script>
+</body>
+
+</html>

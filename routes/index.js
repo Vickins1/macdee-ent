@@ -2,116 +2,162 @@ const express = require('express');
 const router = express.Router();
 const Booking = require('../models/booking');
 
-// Get Bookings Page
-router.get('/bookings', async (req, res) => {
-       if (!req.isAuthenticated()) {
-           req.flash('error', 'Please log in to access your bookings.');
-           return res.redirect('/auth');
-       }
+router.get('/bookings', (req, res) => {
+    const messages = req.flash('message') || [];
+    res.render('bookings', { messages });
+});
+
+// Create a new booking
+router.post('/bookings', async (req, res) => {
+    const {
+        customerName,
+        customerEmail,
+        customerPhone,
+        service,
+        location,
+        eventType,
+        date,
+        time,
+        peopleExpected,
+        totalPrice,
+    } = req.body;
+
+    try {
+        const newBooking = new Booking({
+            customerName,
+            customerPhone,
+            customerEmail,
+            service,
+            location,
+            eventType,
+            date,
+            time,
+            peopleExpected,
+            totalPrice,
+        });
+
+        await newBooking.save();
+        req.flash('success', 'Your booking was successful! We will get back to you ASAP.');
+        res.redirect('/bookings');
+    } catch (error) {
+        console.error('Error creating booking:', error);
+        req.flash('error', 'An error occurred while processing your booking.');
+        res.redirect('/bookings');
+    }
+});
+
+// Edit an existing booking
+router.post('/bookings/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    const {
+        customerName,
+        customerEmail,
+        phoneNumber,
+        service,
+        eventType,
+        location,
+        date,
+        time,
+        totalPrice,
+        peopleExpected,
+    } = req.body;
+
+    const requiredFields = [
+        'customerName',
+        'customerEmail',
+        'phoneNumber',
+        'service',
+        'eventType',
+        'location',
+        'date',
+        'time',
+        'totalPrice',
+        'peopleExpected',
+    ];
+
+    // Check for missing fields
+    const missingFields = requiredFields.filter((field) => !req.body[field]);
+    if (missingFields.length > 0) {
+        req.flash('error', `Missing required fields: ${missingFields.join(', ')}. Please fill in all mandatory fields.`);
+        return res.redirect('/bookings');
+    }
+
+    try {
+        const updatedBooking = await Booking.findByIdAndUpdate(
+            id,
+            {
+                customerName,
+                customerEmail,
+                phoneNumber,
+                service,
+                eventType,
+                location,
+                date,
+                time,
+                totalPrice,
+                peopleExpected,
+                userId: req.user._id, // Ensure the user ID is retained
+            },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedBooking) {
+            req.flash('error', 'Booking not found.');
+            return res.redirect('/bookings');
+        }
+
+        req.flash('success', 'Booking updated successfully.');
+        res.redirect('/bookings');
+    } catch (err) {
+        console.error('Error updating booking:', err);
+
+        // Handle validation errors
+        if (err.name === 'ValidationError') {
+            const errorMessages = Object.values(err.errors).map((error) => error.message);
+            req.flash('error', `Validation failed: ${errorMessages.join(', ')}`);
+            return res.redirect(`/bookings/edit/${id}`);
+        }
+
+        // Handle MongoDB duplicate key error
+        if (err.name === 'MongoError' && err.code === 11000) {
+            req.flash('error', 'Duplicate booking data detected. Please check the fields.');
+            return res.redirect(`/bookings/edit/${id}`);
+        }
+
+        req.flash('error', 'An error occurred while updating the booking. Please try again later.');
+        res.redirect(`/bookings/edit/${id}`);
+    }
+});
+
+// Cancel Booking Route
+router.post('/bookings/cancel/:id', async (req, res) => {
        try {
-           const bookings = await Booking.find({ userId: req.user._id });
+           const bookingId = req.params.id;
    
-           res.render('bookings', {
-               bookings,
-               user: req.user,
-               messages: req.flash()
-           });
-       } catch (err) {
-           console.error('Error fetching bookings:', err);
-           req.flash('error', 'Error fetching your bookings.');
+           // Update the booking status to 'Cancelled'
+           await Booking.findByIdAndUpdate(bookingId, { status: 'Cancelled' });
+   
+           req.flash('success', 'Booking canceled successfully.');
+           res.redirect('/bookings');
+       } catch (error) {
+           req.flash('error', 'Failed to cancel the booking.');
            res.redirect('/bookings');
        }
    });
-   
-   
 
-// Add a New Booking
-router.post('/bookings', async (req, res) => {
-       // Ensure user is authenticated
-       if (!req.isAuthenticated()) {
-           req.flash('error', 'Unauthorized access. Please log in.');
-           return res.redirect('/auth');
-       }
-   
-       const {
-           customerName,
-           customerEmail,
-           phoneNumber,
-           service,
-           eventType,
-           location,
-           date,
-           time,
-           totalPrice,
-           peopleExpected
-       } = req.body;
-   
-       // Validate required fields
-       const requiredFields = [
-           'customerName',
-           'customerEmail',
-           'phoneNumber',
-           'service',
-           'eventType',
-           'location',
-           'date',
-           'time',
-           'totalPrice',
-           'peopleExpected'
-       ];
-   
-       const missingFields = requiredFields.filter(field => !req.body[field]);
-       if (missingFields.length > 0) {
-           req.flash(
-               'error',
-               `Missing required fields: ${missingFields.join(', ')}. Please fill in all mandatory fields.`
-           );
-           return res.redirect('/bookings');
-       }
-   
-       try {
-           // Create and save a new booking
-           const newBooking = new Booking({
-               customerName,
-               customerEmail,
-               phoneNumber,
-               service,
-               eventType,
-               location,
-               date,
-               time,
-               totalPrice,
-               peopleExpected,
-               userId: req.user._id
-           });
-   
-           await newBooking.save();
-   
-           // Flash success message and redirect
-           req.flash('success', 'Booking created successfully.');
-           return res.redirect('/bookings');
-       } catch (err) {
-           console.error('Error creating booking:', err);
-   
-           // Handle Mongoose validation errors
-           if (err.name === 'ValidationError') {
-               const errorMessages = Object.values(err.errors).map(error => error.message);
-               req.flash('error', `Validation failed: ${errorMessages.join(', ')}`);
-               return res.redirect('/bookings');
-           }
-   
-           // Handle MongoDB duplicate key errors
-           if (err.code === 11000) {
-               req.flash('error', 'Duplicate booking data detected. Please check the fields.');
-               return res.redirect('/bookings');
-           }
-   
-           // Handle other errors
-           req.flash('error', 'An error occurred while creating the booking. Please try again later.');
-           return res.redirect('/bookings');
-       }
-   });
-   
+
+   router.get('/live', (req, res) => {
+    // Example: Check if the stream is live or inactive
+    const streamStatus = 'active'; // You would fetch this from the stream service or database
+    const streamUrl = 'http://localhost:8080/hls/stream.m3u8'; // Your live stream URL
+    const streamTitle = 'Event Name or Stream Title'; // Provide a relevant stream title
+
+    res.render('live', {
+        streamStatus: streamStatus,
+        streamUrl: streamUrl,
+        streamTitle: streamTitle
+    });
+});
 
 
 module.exports = router;
